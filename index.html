@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Pet Care</title>
+    <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+    <div class="container">
+        <!-- Setup Screen -->
+        <div class="setup-screen" id="setupScreen">
+            <h1>🐾 Virtual Pet Care</h1>
+            <div class="form-group">
+                <label for="petName">What will you name your pet?</label>
+                <input type="text" id="petName" placeholder="Enter pet name" maxlength="20">
+            </div>
+            <div class="form-group">
+                <label>Choose your pet type:</label>
+                <div class="pet-types">
+                    <div class="pet-option" data-type="dog">
+                        <div class="pet-icon">🐕</div>
+                        <div>Dog</div>
+                    </div>
+                    <div class="pet-option" data-type="cat">
+                        <div class="pet-icon">🐱</div>
+                        <div>Cat</div>
+                    </div>
+                    <div class="pet-option" data-type="rabbit">
+                        <div class="pet-icon">🐰</div>
+                        <div>Rabbit</div>
+                    </div>
+                    <div class="pet-option" data-type="bird">
+                        <div class="pet-icon">🐦</div>
+                        <div>Bird</div>
+                    </div>
+                    <div class="pet-option" data-type="hamster">
+                        <div class="pet-icon">🐹</div>
+                        <div>Hamster</div>
+                    </div>
+                    <div class="pet-option" data-type="fish">
+                        <div class="pet-icon">🐠</div>
+                        <div>Fish</div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn" id="startBtn" disabled>Start Adventure</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div class="game-screen" id="gameScreen">
+            <div class="header">
+                <div>
+                    <h1 id="petNameDisplay"></h1>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">💰 Balance</div>
+                    <div class="stat-value" id="balance">$100</div>
+                </div>
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat">
+                    <div class="stat-label">🍖 Hunger</div>
+                    <div class="stat-bar">
+                        <div class="stat-bar-fill hunger-fill" id="hungerBar"></div>
+                    </div>
+                    <div style="margin-top: 5px; font-weight: 600;" id="hungerValue">100</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">😊 Happiness</div>
+                    <div class="stat-bar">
+                        <div class="stat-bar-fill happiness-fill" id="happinessBar"></div>
+                    </div>
+                    <div style="margin-top: 5px; font-weight: 600;" id="happinessValue">100</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">⚡ Energy</div>
+                    <div class="stat-bar">
+                        <div class="stat-bar-fill energy-fill" id="energyBar"></div>
+                    </div>
+                    <div style="margin-top: 5px; font-weight: 600;" id="energyValue">100</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">❤️ Health</div>
+                    <div class="stat-bar">
+                        <div class="stat-bar-fill health-fill" id="healthBar"></div>
+                    </div>
+                    <div style="margin-top: 5px; font-weight: 600;" id="healthValue">100</div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="pet-display">
+                    <div class="evolution-badge" id="evolutionBadge">Baby</div>
+                    <div class="pet-character" id="petCharacter">🐕</div>
+                    <div class="pet-mood" id="petMood">Happy & Healthy!</div>
+                    <div class="pet-message" id="petMessage">I'm so happy to meet you!</div>
+                </div>
+
+                <div class="actions-panel">
+                    <h2>Care Actions</h2>
+                    <button class="action-btn" id="feedBtn">
+                        <span class="action-icon">🍖</span>
+                        <div class="action-info">
+                            <div class="action-name">Feed</div>
+                            <div class="action-cost">Cost: $5</div>
+                        </div>
+                    </button>
+                    <button class="action-btn" id="playBtn">
+                        <span class="action-icon">🎾</span>
+                        <div class="action-info">
+                            <div class="action-name">Play</div>
+                            <div class="action-cost">Cost: $3</div>
+                        </div>
+                    </button>
+                    <button class="action-btn" id="cleanBtn">
+                        <span class="action-icon">🛁</span>
+                        <div class="action-info">
+                            <div class="action-name">Clean</div>
+                            <div class="action-cost">Cost: $4</div>
+                        </div>
+                    </button>
+                    <button class="action-btn" id="restBtn">
+                        <span class="action-icon">😴</span>
+                        <div class="action-info">
+                            <div class="action-name">Rest</div>
+                            <div class="action-cost">Free</div>
+                        </div>
+                    </button>
+                    <button class="action-btn" id="vetBtn">
+                        <span class="action-icon">⚕️</span>
+                        <div class="action-info">
+                            <div class="action-name">Vet Visit</div>
+                            <div class="action-cost">Cost: $20</div>
+                        </div>
+                    </button>
+                    <button class="action-btn" id="toyBtn">
+                        <span class="action-icon">🎁</span>
+                        <div class="action-info">
+                            <div class="action-name">Buy Toy</div>
+                            <div class="action-cost">Cost: $15</div>
+                        </div>
+                    </button>
+
+                    <div class="earnings-section">
+                        <h3 style="margin-bottom: 10px;">💼 Earn Money</h3>
+                        <p style="font-size: 14px; color: #666; margin-bottom: 10px;">Do chores to earn money for pet care!</p>
+                        <button class="chore-btn" id="chore1Btn">Clean Room (+$10)</button>
+                        <button class="chore-btn" id="chore2Btn">Wash Dishes (+$8)</button>
+                        <button class="chore-btn" id="chore3Btn">Homework (+$12)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="expenses-section">
+                <h2>💳 Care Expenses</h2>
+                <div id="expensesList">
+                    <div class="expense-item">
+                        <span>Food</span>
+                        <span id="foodExpense">$0</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Toys & Activities</span>
+                        <span id="toyExpense">$0</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Healthcare</span>
+                        <span id="healthExpense">$0</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Supplies</span>
+                        <span id="supplyExpense">$0</span>
+                    </div>
+                </div>
+                <div class="total-expenses">
+                    <span>Total Spent:</span>
+                    <span id="totalExpense">$0</span>
+                </div>
+            </div>
+
+            <div class="achievements">
+                <h2>🏆 Achievements</h2>
+                <div class="badge-list" id="badgeList">
+                    <span style="color: #999;">No badges yet. Keep caring for your pet!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+<body>
+<html>
